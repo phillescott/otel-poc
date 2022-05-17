@@ -40,3 +40,4 @@ hs_err_pid*
 build/
 
 !gradle/wrapper/gradle-wrapper.jar
+!jvm-app/opentelemetry-javaagent.jar
