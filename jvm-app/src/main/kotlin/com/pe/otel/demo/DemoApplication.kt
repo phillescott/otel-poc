@@ -1,5 +1,7 @@
 package com.pe.otel.demo
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.web.bind.annotation.GetMapping
@@ -10,9 +12,12 @@ import org.springframework.web.bind.annotation.RestController
 @SpringBootApplication
 class DemoApplication {
 
-	@GetMapping
-	fun get(@RequestParam("name") name: String) {
+	val logger: Logger = LoggerFactory.getLogger(DemoApplication::class.java)
 
+	@GetMapping("/whats-my-name")
+	fun get(@RequestParam("name") name: String): String {
+		logger.info("name is {}", name)
+		return "name is $name"
 	}
 }
 

@@ -31,10 +31,12 @@ hs_err_pid*
 
 .gradle/
 
-.idea/
+.idea/*
 
 */bin/*
 
 
 */build/*
 build/
+
+!gradle/wrapper/gradle-wrapper.jar

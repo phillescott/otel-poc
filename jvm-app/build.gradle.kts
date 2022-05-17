@@ -36,3 +36,15 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
+	jvmArgs = mutableListOf(
+		"-javaagent:$rootDir/jvm-app/opentelemetry-javaagent.jar",
+		//set properties in here
+	)
+	environment = mapOf(
+		"OTEL_TRACES_EXPORTER" to "logging",
+		"OTEL_METRICS_EXPORTER" to "logging"
+	)
+	//or set env variables here
+}
