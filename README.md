@@ -1,5 +1,11 @@
 # otel-poc
 
+Take a look for comments like
+
+```
+!interesting: these are relevant parts of the otel config
+```
+
 ## pre-reqs
 
 - install [sdkman](https://sdkman.io/)

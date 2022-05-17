@@ -16,7 +16,7 @@ class DemoApplication {
 
 	@GetMapping("/whats-my-name")
 	fun get(@RequestParam("name") name: String): String {
-		logger.info("name is {}", name)
+		logger.info("name is {}", name) // !interesting: or is it, just a normal log line...
 		return "name is $name"
 	}
 }

@@ -39,10 +39,10 @@ tasks.withType<Test> {
 
 tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun> {
 	jvmArgs = mutableListOf(
-		"-javaagent:$rootDir/jvm-app/opentelemetry-javaagent.jar",
+		"-javaagent:$rootDir/jvm-app/opentelemetry-javaagent.jar", // !interesting: this is where we add the java agent to instrument the app. file lives locally ATM
 		//set properties in here
 	)
-	environment = mapOf(
+	environment = mapOf( // !interesting: using environment variables to configure the opentelemetry-javaagent
 		"OTEL_TRACES_EXPORTER" to "logging",
 		"OTEL_METRICS_EXPORTER" to "logging"
 	)
