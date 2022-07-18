@@ -10,6 +10,7 @@ Take a look for comments like
 
 - install [sdkman](https://sdkman.io/)
 - run `sdk env`
+- install docker
 
 ## running the jvm-app
 
