@@ -1,0 +1,38 @@
+receivers:
+  # ...
+  otlp:
+    protocols:
+      grpc:
+
+processors:
+  # ...
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 2000
+  batch:
+
+exporters:
+  logging:
+    loglevel: debug
+  otlp/elastic:
+    # Elastic APM server https endpoint without the "https://" prefix
+    endpoint: "https://****.apm.ap-southeast-2.aws.cloud.es.io:443"
+    headers:
+      # Elastic APM Server secret token
+      Authorization: "Bearer ***"
+  zipkin:
+    endpoint: "http://host.docker.internal:9411/api/v2/spans"
+    format: proto
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, otlp/elastic, zipkin]
+    metrics:
+      receivers: [otlp]
+      exporters: [logging, otlp/elastic]
+    # logs:
+    #   receivers: [otlp]
+    #   exporters: [logging, otlp/elastic]
